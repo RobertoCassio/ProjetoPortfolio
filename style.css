@@ -4,13 +4,14 @@ body{
 	margin: 0px;
 	padding: 0px;
 	font-family: 'Tilt_Warp', sans-serif;
-	color: #1E1E2A;
+	color: #222831;
+	background-color:EEEEEE;
 }
 
 .header-container{
 	height: 100vh;
 	weight: 100vw;
-	background-color: #60E1E0;
+	background-color: #00ADB5;
 	background-image: url('./img/background.png');
 	background-repeat: no-repeat;
 	background-position: 80%;
@@ -18,7 +19,7 @@ body{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-itens: flex-start;
+	align-items: flex-start;
 	box-sizing: border-box;
 	padding: 0 112px;
 	position: relative;
@@ -39,9 +40,9 @@ h1{
 }
 .social-media a{
 	text-decoration: none;
-	color: #1E1E2A;
+	color: #222831;
 	padding: 1rem 4rem;
-	border: 1px solid #1E1E2A;
+	border: 1px solid #222831;
 	min-width: 4rem;
 	display: flex;
 	align-items: center;
@@ -53,7 +54,7 @@ h1{
 	font-weight: bold;
 }
 a:hover{
-	background-color: #ffffff;
+	background-color: #EEEEEE;
 }
 /*Menu*/
 
@@ -79,8 +80,8 @@ a:hover{
 .checkbox .trace{
 	width: 50px;
 	height: 2px;
-	background-color: #1E1E2A;
-	position: fixed;
+	background-color: #222831;
+	position: absolute;
 	border-radius: 4px; /* Arredonda as bordas*/
 	transition: 0.5s ease-in-out
 }
@@ -107,15 +108,15 @@ a:hover{
 	background-color: transparent;
 	height: 4px;
 	width: 10px;
-	border-radius: 50%;   /* algo errado com o border-radius */
-	box-shadow: 0px 0px 0px 0px #ffffff;
+	border-radius: 50%;   
+	box-shadow: 0px 0px 0px 0px #EEEEEE;
 	z-index: -1;
 	transition: 400ms ease-in-out 0s;
 }
 .menu-items{
 	position: fixed;
 	top: 0;
-	left: 55vh;
+	left: 125vh;
 	width: 100%;
 	height: 100vh;
 	display: flex;
@@ -126,24 +127,45 @@ a:hover{
 	visibility: hidden;
 	transition: 400ms ease-in-out 0s;
 }
+.menu-items li::after{
+	content:'';
+	height:5px;
+	width:3px;
+	display:flex;
+	background:black;
+	border-radius:6px;
+	transition: 400ms ease-in-out 0s;
+	
+}
+.menu-items li:hover::after{
+	width:200px;
+	transition: 400ms ease-in-out 0s;
+}
 .menu-items a:hover{
-	font-weight: bold;
-	letter-spacing: 2px;
+	color:#00ADB5;
+	transition: 400ms ease-in-out 0s;
 }
 .menu-items ul{
 	list-style-type:none;
 }
 .menu-items ul a{
 	margin: 10px 0;
-	color: #1E1E2A;
+	color: #222831;
 	text-decoration: none;
 	letter-spacing: 4px;
 	font-size: 40px;
+	transition: 400ms ease-in-out 0s
 }
 .menu-items li{
 		margin:15px
 	}
 /*Animação Menu */
+#toggle:checked + .checkbox .toggle{
+	position:fixed
+}
+#toggle:checked + .checkbox .trace{
+	position:fixed;
+}
 #toggle:checked + .checkbox .trace:nth-child(1){  /* O #toggle funciona parecido com um if */
 	transform: rotate(45deg);
 	top: 47px;
@@ -158,11 +180,12 @@ a:hover{
 	transform: rotate(135deg);
 	top: 47px;
 }
+
 #toggle:checked + .checkbox{
-	background-color:#ffffff;
+	background-color:#EEEEEE;
 }
 #toggle:checked ~ .menu{ /* se refere a todos os itens que precedem */
-	box-shadow: 0px 0px 0px 45vmax #ffffff;
+	box-shadow: 0px 0px 0px 45vmax #EEEEEE;
 	z-index: 1;
 	transform: rotate(360deg);
 
@@ -171,6 +194,7 @@ a:hover{
 	visibility: visible;
 	opacity: 1;
 	transform: rotate(360deg);
+	left: 55vh;
 
 }
 .container{
@@ -192,26 +216,33 @@ a:hover{
 	height:300px;
 	border-radius: 100%;
 	margin: 3rem 0 0 0;
-	align-items: center;
-	justify-content: center;
-	background-color: #60E1E0;
-	background-image: url('img/background.jpg');
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	filter: grayscale(0.5);
-	color: #1E1E2A;
+	filter:grayscale(0.4);
+	color: #222831;
 	cursor: pointer;
 	transition: 0.5s ease-in-out;
 }
+.card img{
+	position: absolute;
+	width:300px;
+	height:300px;
+	border-radius: 100%;
+	background-color: #222831;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	/*filter:blur(2px);*/
+	color: #222831;
+	cursor: pointer;
+	transition: 0.5s ease-in-out;
+	}
 .card-text {
 	width: 40%;
 	letter-spacing: 1px;
-	color: rgb(109,109,109);
+	color: #393E46;
 }
 .card-wrapper {
 	height: 100%;
-	color: #60E1E0 ;
+	color: #00ADB5 ;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -226,9 +257,9 @@ a:hover{
 	width: 100px;
 	border-radius: 50%;
 	display: block;
-	border: 1px solid #ffffff;
+	border: 1px solid #EEEEEE;
 	opacity: 0;
-	transition: 0.5 ease-in-out;
+	transition: 0.5s ease-in-out;
 }
 .card-wrapper h2{
 	font-size: 40px;
@@ -244,8 +275,12 @@ a:hover{
 	font-weight: bold;
 	transition: 0.5s ease-in-out;
 }
+
 /* Tira o filtro no hover */
 .card:hover{
+	filter: unset;
+}
+.card:hover + .card img{
 	filter: unset;
 }
 .card:hover > .card-wrapper::before{
@@ -261,11 +296,11 @@ a:hover{
 .footer{
 	width:100%;
 	height: 100px;
-	background-color: #60E1E0;
+	background-color: #00ADB5;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-		color: #1E1E2A;
+		color: #222831;
 		font-weight: bold;
 
 }
