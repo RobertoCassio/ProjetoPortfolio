@@ -1,6 +1,8 @@
 const target = document.querySelectorAll('[data-animation]');  //Seleciono todos elementos com data-animation
 const animationClass = 'animate';
 
+animationScroll();
+
 function animationScroll(){
     const windowTop = window.innerHeight*0.75; //Aqui eu pego a altura da janela no geral
   

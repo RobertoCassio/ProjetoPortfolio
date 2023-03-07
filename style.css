@@ -13,6 +13,7 @@ html{
 	scroll-behavior: smooth;
 }
 /*Typewriter Testing*/
+
 .role h1{
 	overflow: hidden; /* Ensures the content is not revealed until the animation */
   	white-space: nowrap; /* Keeps the content on a single line */
@@ -21,12 +22,19 @@ html{
   	animation: 
     typing 1.5s steps(50, end)
 }
+
 /* The typing effect */
 @keyframes typing {
 	from { width: 0 }
 	to { width: 100% }
   }
 
+  @media (max-width: 1200px){ 
+	.role h1 {
+		font-size: clamp(2rem, 5vw, 4rem) !important;
+		line-height: 120% !important;
+	}
+}
 .header-container{
 	height: 100vh;
 	width: 100vw;
@@ -40,8 +48,43 @@ html{
 	justify-content: center;
 	align-items: flex-start;
 	box-sizing: border-box;
-	padding: 0 112px;
+	padding: 0 10vh;
 	position: relative;
+}
+@media (max-width: 1131px){
+	.header-container{
+		height:80vh;
+		width:100vw !important;
+		transition: 0.5s ease-in-out;
+	}
+}
+@media (max-width:1021px){
+	.header-container{
+		height: 40vh;
+		width:100vw;
+		transition: 0.5s ease-in-out;
+	}
+}
+@media (max-width:778px){
+	.header-container{
+	margin-bottom: 2.6rem;
+	background-image: none;
+	}
+}
+
+@media (max-width:575px){
+		.role{
+			font-size: 60%;
+			margin: 0 auto;
+		}
+		.role h1 {
+			font-size: clamp(1rem, 5vw, 4rem) !important;
+			line-height: 120% !important;
+		}
+		.social-media{
+			margin: 0 auto;
+			display:block !important;
+		}
 }
 h1{
 	font-size: 50px;
@@ -65,6 +108,20 @@ h1{
 	transition: 0.5s ease-in-out;
 	
 }
+@media (max-width: 575px){
+	.social-media a{
+		font-size: 90%;
+		transition: 0.5s ease-in-out;
+	}
+
+}
+@media (max-width: 575px){
+	.social-media a{
+		padding: 0.5rem 2rem;
+		transition: 0.5s ease-in-out;
+	}
+
+}
 .social-media a:hover{
 	font-weight: bold;
 }
@@ -78,10 +135,13 @@ a:hover{
 	justify-content: center;
 	align-items: center;
 }
+
 .checkbox{
 	height:100px;
 	width:100px;
-	position: absolute;
+	position: fixed;
+	background-color: transparent;
+	border-radius:50%;
 	right: 0px;
 	top: 0px;
 	display: flex;
@@ -89,13 +149,14 @@ a:hover{
 	cursor:pointer;
 	z-index: 9999;
 	transition: 400ms ease-in-out 0s;
+	
 }
 
 /*Tracinhos do menu */
 .checkbox .trace{ 	/* No momento o link está no trace, arrumar*/
 	width: 50px;
 	height: 2px;
-	background-color: #222831;
+	background-color:#393E46;
 	position: fixed;
 	border-radius: 4px; /* Arredonda as bordas*/
 	transition: 0.5s ease-in-out
@@ -132,7 +193,8 @@ a:hover{
 	position: fixed;
 	top: 0;
 	left: 125vh;
-	width: 100%;
+	width: 40vw;
+	margin: 0 20vw;
 	height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -153,7 +215,7 @@ a:hover{
 	
 }
 .menu-items li:hover::after{
-	width:200px;
+	width:18vw;
 	transition: 400ms ease-in-out 0s;
 }
 .menu-items a:hover{
@@ -174,6 +236,17 @@ a:hover{
 .menu-items li{
 		margin:15px
 	}
+
+	@media (max-width: 750px){
+		.menu-items a{
+			font-size: 150% !important;
+			transition: 0.5s ease-in-out;
+		}
+		.menu-items{
+			margin: 0 -15vw;
+		}
+	
+}
 
 
 /*Anima��o Menu */
@@ -202,7 +275,7 @@ a:hover{
 	background-color:#EEEEEE;
 }
 #toggle:checked ~ .menu{ /* se refere a todos os itens que precedem */
-	box-shadow: 0px 0px 0px 45vmax #EEEEEE;
+	box-shadow: 0 30vw 0px 50vmax #EEEEEE;
 	z-index: 1;
 	transform: rotate(360deg);
 
@@ -237,26 +310,37 @@ a:hover{
 	color: #222831;
 	cursor: pointer;
 	transition: 0.5s ease-in-out;
+	overflow: hidden;
 }
 .card img{
 	position: absolute;
+	display: flex;
+	justify-content: center;
 	width:300px;
-	height:300px;
+	/*height:300px;*/
 	border-radius: 100%;
 	background-color: #222831;
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	/*filter:blur(2px);*/
+	filter:blur(2px);
 	color: #222831;
 	cursor: pointer;
 	transition: 0.5s ease-in-out;
-	}
+	top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+	} 
+
 .card-text {
 	width: 40%;
 	letter-spacing: 1px;
 	color: #393E46;
 }
+@media (max-width:720px){
+	.card-text {
+		display:none;
+	}
+} 
 .card-wrapper {
 	height: 100%;
 	color: #00ADB5 ;
@@ -293,22 +377,25 @@ a:hover{
 	transition: 0.5s ease-in-out;
 }
 
-/* Tira o filtro no hover */
+
 .card:hover{
-	filter: unset;
+	filter: grayscale(0);
 }
-.card:hover + .card img{
-	filter: unset;
+.card:hover > img{
+	filter: none;
+	
 }
 .card:hover > .card-wrapper::before{
 	height: 250px;
 	width: 250px;
 	opacity: 1;
+	
 }
 .card:hover > .card-wrapper p {
 	opacity: 1;
 	visibility: visible;
 	font-size: 14px;
+	
 }
 
 .about-container{
@@ -322,8 +409,11 @@ a:hover{
 }
 .about-wrapper{
 	position: relative;
-	width:1000px;
-	margin: 150px auto;
+	height:80vh;
+	width:80vw !important;
+	margin: 10vh auto;
+	transition: 0.5s ease-in-out;
+	margin: 25vh auto;
 	
 
 }
@@ -341,36 +431,69 @@ a:hover{
 	line-height: 180%;
 
 }
+@media (max-width: 1200px){ 
+	.about-container{
+		width: 100vw;
+		height: 150vh;
+	}
+}
+@media (max-width: 480px){ 
+	.about-container{
+		font-size:0.9rem;
+	}
+	}
+@media (max-width: 280px){ 
+	.about-container{
+		font-size:0.7rem;
+	}
+	}
 .contact-container{
 	position: relative;
 	width: 100%;
 	height: 100vh;
-	margin-top: 100px;
+	margin-top: 10vh;
 	
 }
+@media (max-width: 720px){ 
+	.contact-container {
+		height:150vh;
+	}
+	}
 .contact-wrapper{
 	position: relative;
-	width:1000px;
-	height:150px;
-	margin: 80px auto;
+	width:40vw;
+	height:50vh;
+	margin: 20vh auto;
+	
 }
 .contact-wrapper h2{
 	color: #222831;
 	text-align:center;
 	font-weight:600;
 	font-size: 30px;	
+	
 }
-.assetbox-wrapper{
-	height:250px;
-	width: 500px;
-	margin: 0 auto;
 
+
+@media (max-width: 1200px){
+	.contact-wrapper{
+		height:80vh;
+	}
 }
+@media (max-width: 720px){
+	.contact-wrapper{
+		height:120vh;
+	}
+}
+@media (max-width: 640px){ 
+	.contact-wrapper {
+		width: 30vw;
+	}
+	}
 .assetbox{
-	position:relative;
-	width:120px;
-	height:200px;
-	align-items: center;
+	display:inline;
+	width:20vh;
+	height:33vh;
 	overflow: hidden;
 	float:left;
 	margin-left:40px;
@@ -392,10 +515,17 @@ a:hover{
 }
 .assetbox img{
 	max-width: 50%;
-	margin-bottom: 50px;
-	margin-left: 30px;
+	margin-bottom: 3vh;
+	margin-left: 4.5vh;
 	
 }
+
+@media (max-width: 640px){ 
+	.assetbox {
+		position: relative;
+	}
+	}
+
 .assetbox:hover{
 	transform: scale(1.3);
 	transition: 0.5s ease-in-out;
@@ -426,6 +556,9 @@ a:hover{
 }
 [data-animation="right"]{
 	transform: translate3d(50px, 0, 0)
+}
+[data-animation="bottomstart"]{
+	transforM: translate3d(0, 50px, 0)
 }
 [data-animation].animate{
 	opacity: 1;
